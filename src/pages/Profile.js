@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
-import FeedService from '../lib/feed-service';
+import ProfileService from '../lib/profile-service';
 
-class Feed extends Component {
+class Profile extends Component {
   state = {
     posts: [],
     isLoading: true,
@@ -13,7 +13,7 @@ class Feed extends Component {
   }
 
   getPosts = () => {
-    FeedService.getFeed()
+    ProfileService.getProfile()
       .then((data) => {
         console.log(data);
         this.setState({
@@ -28,19 +28,17 @@ class Feed extends Component {
   renderPosts = () => {
     return this.state.posts.map((post,index) => 
       <div key={index}>
-        <h5>{post.location}</h5>
-        <img src={post.imageUrl} style={{width: '50vh'}}/>
-        <p>{post.description}</p>
+        <img src={post.imageUrl} style={{width:'7.5rem'}}/>
       </div>
   )}
 
   render() {
     return (
-      <div>
+      <div style={{display:'flex', justifyContent:'space-around'}}>
         {this.renderPosts()}
       </div>
     )
   }
 }
 
-export default withAuth()(Feed);
+export default withAuth()(Profile);

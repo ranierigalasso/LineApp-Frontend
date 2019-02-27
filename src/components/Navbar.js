@@ -22,16 +22,22 @@ class Navbar extends Component {
           </div>
           <div className='bottom'>
           <div className='bottom-item'>
-            <FontAwesomeIcon icon="home" size="2x" />
+            <Link to='/feed'>
+              <FontAwesomeIcon icon="home" size="2x" />
+            </Link>
           </div>
           <div className='bottom-item'>
             <FontAwesomeIcon icon="search" size="2x"/>
           </div>
           <div className='bottom-item'>
-            <FontAwesomeIcon icon="plus-square" size="2x" />
+            <Link to='/create'>
+              <FontAwesomeIcon icon="plus-square" size="2x" />
+            </Link>
           </div>
           <div className='bottom-item'>
-            <FontAwesomeIcon icon="user-alt" size="2x"/>
+            <Link to='/profile'>
+              <FontAwesomeIcon icon="user-alt" size="2x"/>
+            </Link>
           </div>
           <div className='bottom-item'>
             <FontAwesomeIcon icon="cog" size="2x"/>

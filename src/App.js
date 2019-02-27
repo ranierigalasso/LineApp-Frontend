@@ -6,6 +6,7 @@ import AnonRoute from './components/AnonRoute';
 import Navbar from './components/Navbar';
 import AuthProvider from './components/AuthProvider';
 
+import Profile from './pages/Profile';
 import Create from './pages/Create';
 import Feed from './pages/Feed';
 import Signup from './pages/Signup';
@@ -24,6 +25,7 @@ class App extends Component {
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/feed" component={Feed} />
             <PrivateRoute path="/create" component={Create} />
+            <PrivateRoute path="/profile" component={Profile} />
           </Switch>
         </div>
       </AuthProvider>
