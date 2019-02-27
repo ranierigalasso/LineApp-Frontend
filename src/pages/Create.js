@@ -8,6 +8,7 @@ class Create extends Component {
     imageUrl: '',
     description: '',
   }
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     const {location, imageUrl, description} = this.state;
@@ -16,27 +17,28 @@ class Create extends Component {
       imageUrl,
       description,
     }
-    createService.createPost(body)
-      .then((success) => {
-        //this.props.history.push(`/`);
-      })
-      .catch((error) => {console.log(error.message)})
-
-    // auth.signup({ username, password })
-    //   .then( (user) => {
-    //     this.setState({
-    //         username: "",
-    //         password: "",
-    //     });
-    //     this.props.setUser(user)
+    // console.log('before createservice')
+    // createService.createPost(body)
+    //   .then(() => {
+    //     console.log('done')
+    //     this.props.history.push(`/`);
     //   })
-    //   .catch( error => console.log(error) )
+    //   .catch((error) => {console.log(error.message)}) 
+    //=========NEEED TO SOLVE THIS=========== it does not go inside the .then
+
+    let create = createService.createPost(body)
+    let redirect =  this.props.history.push(`/`);
+
+    Promise.all([create, redirect])
+   
   }
+
   handleChange = (event) => {  
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
+
   render() {
     const { location, imageUrl, description } = this.state;
     return (
