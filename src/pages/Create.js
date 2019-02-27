@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
-import createService from '../lib/create-service';
+import CreateService from '../lib/create-service';
 
 class Create extends Component {
   state = {
@@ -18,16 +18,16 @@ class Create extends Component {
       description,
     }
     // console.log('before createservice')
-    // createService.createPost(body)
+    // CreateService.createPost(body)
     //   .then(() => {
     //     console.log('done')
     //     this.props.history.push(`/`);
     //   })
     //   .catch((error) => {console.log(error.message)}) 
-    //=========NEEED TO SOLVE THIS=========== it does not go inside the .then
+    //=========NEEED TO SOLVE THIS=========== it does not go inside the .then       the below fixes it but why?
 
-    let create = createService.createPost(body)
-    let redirect =  this.props.history.push(`/`);
+    let create = CreateService.createPost(body)
+    let redirect =  this.props.history.push(`/feed`);
 
     Promise.all([create, redirect])
    

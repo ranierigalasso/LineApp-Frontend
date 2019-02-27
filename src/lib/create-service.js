@@ -9,12 +9,12 @@ class Create {
   }
 
   createPost(body) {
-    console.log(body)
+    //console.log(body)
     return this.create.post('/create', body)
   }
 
 }
 
-const createService = new Create();
+const CreateService = new Create();
 
-export default createService;
+export default CreateService;
