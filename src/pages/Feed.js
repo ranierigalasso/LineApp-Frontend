@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
-class Private extends Component {
+
+class Feed extends Component {
   render() {
     const { user } = this.props
     return (
@@ -11,4 +12,4 @@ class Private extends Component {
   }
 }
 
-export default withAuth()(Private);
+export default withAuth()(Feed);

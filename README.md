@@ -10,30 +10,30 @@ An application specifically designed for surfers to create a social profile & sh
 -  **Signup:** As an anon I can sign up in the platform so that I can start saving favorite restaurants
 -  **Login:** As a user I can login to the platform so that I can see my favorite restaurants
 -  **Logout:** As a user I can logout from the platform so no one else can use it
--  **Folow Users** As a user I can follow other users and 
--  **Create Post**
--  **Edit Post**
--  **Delete Post**
--  **Comment on Posts**
--  **View Users Profile**
+-  **View Feed** As a user i can view my feed populated by posts of users i follow
+-  **Search Users** As a user I can search for other users profiles
+-  **Folow Users** As a user I can follow other users and view their profile
+-  **Create Post** As a user i can create a post
+-  **Edit Post** As a user i can edit a post i created
+-  **Delete Post** As a user i can delete a post i created
+-  **Comment on Posts** As a user I can comment on other posts
+-  **Manage Settings** As a user I can manage my settings
 
 
 ## Backlog
 
-User profile:
-- see my profile
-- upload my profile picture
-- see other users profile
-- list of events created by the user
-- list events the user is attending
+Erorrs:
+- manage error handling in state
 
-Geo Location:
-- add geolocation to events when creating
-- show event in a map in event detail page
-- show all events in a map in the event list page
+Image:
+- upload image
 
-Homepage:
-- ...
+State:
+- manage some parts of the state with redux
+
+Geo Location & Surf Forecast:
+- add geolocation when creating post
+- show forecast of the spot
   
 # Client
 
@@ -87,18 +87,18 @@ User model
 
 ```
 username - String // required
-email - String // required & unique
 password - String // required
-favorites - [ObjectID<Restaurant>]
+profileImage: String || default one otherwise
+following: [ ObjectID<User> ]
 ```
 
-Restaurant model
+Post model
 
 ```
 owner - ObjectID<User> // required
-name - String // required
-phone - String
-address - String
+location - String
+imageURL - String // required
+description - String
 ```
 
 ## API Endpoints (backend routes)

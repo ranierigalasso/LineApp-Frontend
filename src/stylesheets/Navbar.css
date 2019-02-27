@@ -1,0 +1,21 @@
+.top {
+  text-align: center;
+}
+.logo {
+  height: 10vh;
+}
+.bottom {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  background: #4381C1;
+  color: white;
+}
+.bottom-item {
+  border: 1px solid white;
+  width: 20%;
+  padding: 1rem;
+}

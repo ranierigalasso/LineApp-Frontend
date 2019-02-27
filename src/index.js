@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 
-import 'milligram/dist/milligram.css';
+import 'bootstrap/dist/css/bootstrap.css';
+
+//import 'milligram/dist/milligram.css';
 
 ReactDOM.render(
   <Router>

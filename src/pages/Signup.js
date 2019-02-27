@@ -8,8 +8,7 @@ class Signup extends Component {
     username: "",
     password: "",
   };
-
-  handleFormSubmit = (event) => {
+handleFormSubmit = (event) => {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
@@ -24,6 +23,7 @@ class Signup extends Component {
       })
       .catch( error => console.log(error) )
   }
+  
 
   handleChange = (event) => {  
     const {name, value} = event.target;
