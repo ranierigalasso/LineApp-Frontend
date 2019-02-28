@@ -20,6 +20,18 @@ class Profile {
       return data;
     });
   }
+  followOthers(loggedUsername,id){
+    return this.profile.post(`/profile/${id}/follow`, { loggedUsername })
+    .then(({data}) => {
+      return data
+    });
+  }
+  unfollowOthers(loggedUsername,id){
+    return this.profile.post(`/profile/${id}/unfollow`, { loggedUsername })
+    .then(({data}) => {
+      return data
+    });
+  }
 }
 
 const ProfileService = new Profile();

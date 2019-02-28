@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import ProfileService from '../lib/profile-service';
+import { Form, Button } from 'react-bootstrap';
 
 class OthersProfile extends Component {
   state = {
@@ -8,6 +9,7 @@ class OthersProfile extends Component {
     profileImg: '',
     posts: [],
     isLoading: true,
+    //following: false,
   }
 
   componentDidMount() {
@@ -18,7 +20,7 @@ class OthersProfile extends Component {
     const { id } = this.props.match.params;
     ProfileService.getOthersProfile(id)
       .then((data) => {
-        console.log(data[1]);
+        //console.log(data[1]);
         this.setState({
           username: data[1].username,
           profileImg: data[1].profileImg,
@@ -27,6 +29,7 @@ class OthersProfile extends Component {
         })
       })
       .catch((error) => {
+        console.log(error)
       })
   }
 
@@ -37,6 +40,53 @@ class OthersProfile extends Component {
       </div>
   )}
 
+  handleFormFollow = (event) => {
+    event.preventDefault();
+    const { id } = this.props.match.params;
+    let loggedUsername = this.props.user.username;
+    ProfileService.followOthers(loggedUsername, id)
+      .then((data) => {
+        this.props.setUser(data)
+        // this.setState({
+        //   following: true,
+        // })
+      })
+      .catch(error => console.log(error))
+  }
+  handleFormUnfollow = (event) => {
+    event.preventDefault();
+    const { id } = this.props.match.params;
+    let loggedUsername = this.props.user.username;
+    ProfileService.unfollowOthers(loggedUsername, id)
+      .then((data) => {
+        this.props.setUser(data)
+        // this.setState({
+        //   following: true,
+        // })
+      })
+      .catch(error => console.log(error))
+  }
+  isFollowing = () => {
+    const { id } = this.props.match.params;
+    if(this.props.user.following.includes(id)) {
+      return (
+        <Form onSubmit={this.handleFormUnfollow}>
+          <Button variant="primary" type="submit">
+            Unfollow
+          </Button>
+        </Form>
+      ) 
+    } else {
+      return (
+        <Form onSubmit={this.handleFormFollow}>
+          <Button variant="primary" type="submit">
+            Follow
+          </Button>
+        </Form>
+      )
+    }
+  }
+
   render() {
     const { username, profileImg } = this.state;
     return (
@@ -46,6 +96,7 @@ class OthersProfile extends Component {
           <h3>
             {username}
           </h3>
+          {this.isFollowing()}
         </div>
         <div style={{display:'flex', justifyContent:'space-around'}}>
           {this.renderPosts()}

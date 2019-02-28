@@ -44,40 +44,33 @@ Geo Location & Surf Forecast:
 | `post` | `/auth/signup` | SignupPageComponent| anon only| signup form, link to login, navigate to homepage after signup|
 | `post` | `/auth/login` | LoginPageComponent | anon only |login form, link to signup, navigate to homepage after login |
 | `post` | `/auth/logout` | n/a| anon only | navigate to homepage after logout, expire session |
-| `get`  | `/restaurants` | RestaurantListPageComponent| public | shows all restaurants, links to details, search restaurants by name
-| `post` | `/restaurants` | RestaurantCreatePageComponent | user only | creates a new restaurant, navigates to restaurant's detail page after creation
-| `put` | `/restaurants/:id` | RestaurantDetailPageComponent  | public/user | details of one restaurant, if logged in - button to add to favorite, show star if in favorites already
-| `delete` | `/restaurants/:id` | na | user only | delete resteraunt
-| `get` | `/profile/me` | ProfilePageComponent | user only | my details, my favorite restaurants, restaurants created by me
-| `get` | `**` | NotFoundPageComponent | public | 
-
-
+| `get`  | `/feed` | feed showing your and the users you follow posts
+| `post` | `/create` | create a new post
+| `get` | `/search` | retrieve all users available in database
+| `get` | `/profile/me` | my profile page
+| `post` | `/profile/me/delete` | delete my own profile
+| `get` | `/profile/:id` | other users profile page
+| `post` | `/profile/:id/follow` | follow a user
+| `get` | `/post/:id` | see a post details
+| `post` | `/post/delete` | delete my own post
+| `put` | `/post edit` | edit my own post
 
 
 ## Components
 
-- Restaurant Card component
-  - Input: restaurant: any
-  - Output: favorite(restaurantId: string, on: boolean)
-- Search component
-  - Output: change(terms: string)
+- Navbar
+- PrivateRoute
+- AuthProvider
+- AnonRoute
 
 
 ## Services
 
-- Auth Service
-  - auth.login(user)
-  - auth.signup(user)
-  - auth.logout()
-  - auth.me()
-  - auth.getUser() // synchronous
-- Restaurant Service
-  - restaurant.list()
-  - restaurant.search(terms)
-  - restaurant.create(data)
-  - restaurant.detail(id)
-  - restaurant.addFavorite(id)
-  - restaurant.removeFavorite(id)   
+- Search
+- Profile
+- Feed
+- Settings
+- Create 
 
 # Server
 
@@ -100,68 +93,6 @@ location - String
 imageURL - String // required
 description - String
 ```
-
-## API Endpoints (backend routes)
-
-- GET /auth/me
-  - 404 if no user in session
-  - 200 with user object
-- POST /auth/signup
-  - 401 if user logged in
-  - body:
-    - username
-    - email
-    - password
-  - validation
-    - fields not empty (422)
-    - user not exists (409)
-  - create user with encrypted password
-  - store user in session
-  - 200 with user object
-- POST /auth/login
-  - 401 if user logged in
-  - body:
-    - username
-    - password
-  - validation
-    - fields not empty (422)
-    - user exists (404)
-    - passdword matches (404)
-  - store user in session
-  - 200 with user object
-- POST /auth/logout
-  - body: (empty)
-  - 204
-- POST /user/me/favorite
-  - body:
-    - restaurantId
-  - validation
-    - id is valid (404)
-    - id exists (404)
-  - add to favorites if not there yet
-  - updates user in session
-- DELETE /user/me/favorite/:restaurantId
-  - validation
-    - id is valid (404)
-    - id exists (404)
-  - body: (empty - the user is already stored in the session)
-  - remove from favorites
-  - updates user in session
-- GET /restaurant?terms=foo
-  - use search criteria if terms provided
-  - 200 with array of restaurants
-- POST /restaurant
-  - body:
-    - name
-    - phone
-    - address
-  - validation
-    - fields not empty
-  - create restaurant
-  - 200 with restaurant object
-- GET /restaurant/:id
-
-  
 
 ## Links
 

@@ -18,20 +18,13 @@ class Create extends Component {
       imageUrl,
       description,
     }
-    // console.log('before createservice')
-    // CreateService.createPost(body)
-    //   .then(() => {
-    //     console.log('done')
-    //     this.props.history.push(`/`);
-    //   })
-    //   .catch((error) => {console.log(error.message)}) 
-    //=========NEEED TO SOLVE THIS=========== it does not go inside the .then       the below fixes it but why?
-
-    let create = CreateService.createPost(body)
-    let redirect =  this.props.history.push(`/feed`);
-
-    Promise.all([create, redirect])
-   
+    console.log('before createservice')
+    CreateService.createPost(body)
+      .then(() => {
+        console.log('done')
+        this.props.history.push(`/feed`);
+      })
+      .catch((error) => {console.log(error.message)}) 
   }
 
   handleChange = (event) => {  
