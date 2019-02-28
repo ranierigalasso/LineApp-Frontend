@@ -27,7 +27,9 @@ class Navbar extends Component {
             </Link>
           </div>
           <div className='bottom-item'>
-            <FontAwesomeIcon icon="search" size="2x"/>
+            <Link to='/search'>
+              <FontAwesomeIcon icon="search" size="2x"/>
+            </Link>
           </div>
           <div className='bottom-item'>
             <Link to='/create'>
@@ -35,7 +37,7 @@ class Navbar extends Component {
             </Link>
           </div>
           <div className='bottom-item'>
-            <Link to='/profile'>
+            <Link to='/profile/me'>
               <FontAwesomeIcon icon="user-alt" size="2x"/>
             </Link>
           </div>

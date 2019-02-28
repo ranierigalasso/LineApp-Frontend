@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import auth from '../lib/auth-service';
+import { Form, Button } from 'react-bootstrap';
 
 class Signup extends Component {
 
@@ -34,18 +35,20 @@ handleFormSubmit = (event) => {
     const { username, password } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-          <input type="submit" value="Signup" />
-        </form>
-
-        <p>Already have account? 
-          <Link to={"/login"}> Login</Link>
-        </p>
-
+         <Form onSubmit={this.handleFormSubmit}>
+        <Form.Group controlId="formBasicUsername">
+          <Form.Control type="text" name="username" value={username} onChange={this.handleChange} placeholder="Username" />
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Control type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password" />
+          <Form.Text className="text-muted">
+            Already have an account? <Link to='/login'>Log In</Link>
+          </Form.Text>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Sign Up
+        </Button>
+      </Form>
       </div>
     )
   }

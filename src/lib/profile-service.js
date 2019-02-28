@@ -8,8 +8,14 @@ class Profile {
     })
   }
 
-  getProfile() {
-    return this.profile.get('/profile')
+  getMyProfile() {
+    return this.profile.get('/profile/me')
+    .then(({data}) => {
+      return data;
+    });
+  }
+  getOthersProfile(id) {
+    return this.profile.get(`/profile/${id}`)
     .then(({data}) => {
       return data;
     });

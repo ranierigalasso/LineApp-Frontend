@@ -2,23 +2,27 @@ import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import ProfileService from '../lib/profile-service';
 
-class Profile extends Component {
+class OthersProfile extends Component {
   state = {
+    username: '',
+    profileImg: '',
     posts: [],
     isLoading: true,
   }
 
   componentDidMount() {
-    console.log(this.props)
     this.getPosts();   
   }
 
   getPosts = () => {
-    ProfileService.getMyProfile()
+    const { id } = this.props.match.params;
+    ProfileService.getOthersProfile(id)
       .then((data) => {
-        console.log(data);
+        console.log(data[1]);
         this.setState({
-          posts: data,
+          username: data[1].username,
+          profileImg: data[1].profileImg,
+          posts: data[0],
           isLoading: false,
         })
       })
@@ -34,7 +38,7 @@ class Profile extends Component {
   )}
 
   render() {
-    const { username, profileImg } = this.props.user;
+    const { username, profileImg } = this.state;
     return (
       <div >
         <div style={{background:'wheat',display:'flex', padding:'2rem'}}>
@@ -51,4 +55,4 @@ class Profile extends Component {
   }
 }
 
-export default withAuth()(Profile);
+export default withAuth()(OthersProfile);

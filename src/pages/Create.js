@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import CreateService from '../lib/create-service';
+import { Form, Button } from 'react-bootstrap';
 
 class Create extends Component {
   state = {
@@ -43,13 +44,20 @@ class Create extends Component {
     const { location, imageUrl, description } = this.state;
     return (
       <div>
-        <h1>Lets create a post!</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <input type="text" name="location" value={location} onChange={this.handleChange} placeholder='Location'/>
-          <input type="text" name="imageUrl" value={imageUrl} onChange={this.handleChange} placeholder='Image URL'/>
-          <input type="text" name="description" value={description} onChange={this.handleChange} placeholder='Description'/>
-          <input style={{background:'blue', color: 'white'}} type="submit" value="Share" />
-        </form>
+        <Form onSubmit={this.handleFormSubmit}>
+          <Form.Group controlId="formBasicLocation">
+            <Form.Control type="text" name="location" value={location} onChange={this.handleChange} placeholder="Location" />
+          </Form.Group>
+          <Form.Group controlId="formBasicImage">
+            <Form.Control type="text" name="imageUrl" value={imageUrl} onChange={this.handleChange} placeholder="Image URL" />
+          </Form.Group>
+          <Form.Group controlId="formBasicDescription">
+            <Form.Control type="text" name="description" value={description} onChange={this.handleChange} placeholder="Description" />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Share
+          </Button>
+        </Form>
       </div>
     )
   }

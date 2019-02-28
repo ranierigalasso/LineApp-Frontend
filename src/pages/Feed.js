@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import FeedService from '../lib/feed-service';
 
+import '../stylesheets/Feed.css';
+
 class Feed extends Component {
   state = {
     posts: [],
@@ -26,11 +28,15 @@ class Feed extends Component {
   }
 
   renderPosts = () => {
+    console.log(this.state.posts)
     return this.state.posts.map((post,index) => 
-      <div key={index}>
+      <div className='post-box' key={index}>
         <h5>{post.location}</h5>
-        <img src={post.imageUrl} style={{width: '50vh'}}/>
-        <p>{post.description}</p>
+        <img src={post.imageUrl} />
+        <div>
+          <p>user</p>
+          <p>{post.description}</p>
+        </div>
       </div>
   )}
 
