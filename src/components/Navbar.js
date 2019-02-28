@@ -42,7 +42,9 @@ class Navbar extends Component {
             </Link>
           </div>
           <div className='bottom-item'>
-            <FontAwesomeIcon icon="cog" size="2x"/>
+            <Link to='/settings'>
+              <FontAwesomeIcon icon="cog" size="2x"/>
+            </Link>
           </div>
         </div>
       </div>

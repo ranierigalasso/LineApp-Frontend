@@ -6,6 +6,7 @@ import AnonRoute from './components/AnonRoute';
 import Navbar from './components/Navbar';
 import AuthProvider from './components/AuthProvider';
 
+import Settings from './pages/Settings';
 import Search from './pages/Search';
 import Profile from './pages/Profile';
 import OthersProfile from './pages/OthersProfile';
@@ -30,6 +31,7 @@ class App extends Component {
             <PrivateRoute path="/profile/me" component={Profile} />
             <PrivateRoute path="/profile/:id" component={OthersProfile} />
             <PrivateRoute path="/search" component={Search} />
+            <PrivateRoute path="/settings" component={Settings} />
           </Switch>
         </div>
       </AuthProvider>

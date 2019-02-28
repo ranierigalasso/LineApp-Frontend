@@ -9,7 +9,7 @@ class Feed {
   }
 
   getFeed() {
-    return this.feed.get('/feed')
+    return this.feed.get('/feed',)
     .then(({data}) => {
       return data;
     });

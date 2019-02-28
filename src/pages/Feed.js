@@ -17,7 +17,6 @@ class Feed extends Component {
   getPosts = () => {
     FeedService.getFeed()
       .then((data) => {
-        console.log(data);
         this.setState({
           posts: data,
           isLoading: false,
@@ -28,13 +27,12 @@ class Feed extends Component {
   }
 
   renderPosts = () => {
-    console.log(this.state.posts)
     return this.state.posts.map((post,index) => 
       <div className='post-box' key={index}>
         <h5>{post.location}</h5>
-        <img src={post.imageUrl} />
+        <img src={post.imageUrl} alt='feed'/>
         <div>
-          <p>user</p>
+          <p>user to display</p>
           <p>{post.description}</p>
         </div>
       </div>

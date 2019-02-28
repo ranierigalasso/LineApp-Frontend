@@ -9,7 +9,6 @@ class OthersProfile extends Component {
     profileImg: '',
     posts: [],
     isLoading: true,
-    //following: false,
   }
 
   componentDidMount() {
@@ -20,7 +19,6 @@ class OthersProfile extends Component {
     const { id } = this.props.match.params;
     ProfileService.getOthersProfile(id)
       .then((data) => {
-        //console.log(data[1]);
         this.setState({
           username: data[1].username,
           profileImg: data[1].profileImg,
@@ -47,9 +45,6 @@ class OthersProfile extends Component {
     ProfileService.followOthers(loggedUsername, id)
       .then((data) => {
         this.props.setUser(data)
-        // this.setState({
-        //   following: true,
-        // })
       })
       .catch(error => console.log(error))
   }
@@ -60,9 +55,6 @@ class OthersProfile extends Component {
     ProfileService.unfollowOthers(loggedUsername, id)
       .then((data) => {
         this.props.setUser(data)
-        // this.setState({
-        //   following: true,
-        // })
       })
       .catch(error => console.log(error))
   }
