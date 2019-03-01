@@ -30,7 +30,7 @@ class Profile extends Component {
   }
 
   renderPosts = () => {
-    console.log(this.state.posts)
+    // console.log(this.state.posts)
     return this.state.posts.map((post,index) => 
       <Link className='image' key={index} to={`/post/${post._id}`}>
           <img src={post.imageUrl} />
@@ -38,14 +38,17 @@ class Profile extends Component {
   )}
 
   render() {
-    const { username, profileImg } = this.props.user;
+    const { username, profileImg,profileStatus, following } = this.props.user;
+    console.log(this.props)
     return (
       <div>
-        <div style={{background:'wheat',display:'flex', padding:'2rem'}}>
+        <div style={{display:'flex', padding:'2rem'}}>
           <img style={{height:'3rem', width:'3rem', borderRadius:'10px'}} src={profileImg} />
           <h3>
             {username}
           </h3>
+          <h5>{profileStatus}</h5>
+          <h5>following: {following.length}</h5>
         </div>
         <div className='image-container'>
           {this.renderPosts()}

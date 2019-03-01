@@ -13,6 +13,7 @@ class Post extends Component {
     description: '',
     imageUrl: '',
     location: '',
+    username: '',
   }
   componentDidMount = () => {
     this.getPost();
@@ -22,13 +23,16 @@ class Post extends Component {
     const { id } = this.props.match.params;
     PostService.getPost(id)
       .then((data) => {
-        const {creatorId,createdAt, description, imageUrl, location} = data
+        const {createdAt, description, imageUrl, location} = data;
+        const creatorId = data.creatorId._id;
+        const username = data.creatorId.username;
         this.setState({
           creatorId,
           createdAt,
           description,
           imageUrl,
           location,
+          username,
         })
       })
       .catch((error) => {
@@ -73,11 +77,12 @@ class Post extends Component {
 
   render() {
     
-    const {createdAt, description, imageUrl, location} = this.state;   
+    const {username, createdAt, description, imageUrl, location} = this.state;   
     return (
       <div>
        <div>
         <h5>{location}</h5>
+        <h5>{username}</h5>
         <img src={imageUrl} alt='selected'/>
         <div>
           <p>{description}</p>

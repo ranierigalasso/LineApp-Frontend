@@ -10,6 +10,8 @@ class OthersProfile extends Component {
   state = {
     username: '',
     profileImg: '',
+    profileStatus: '',
+    following: [],
     posts: [],
     isLoading: true,
   }
@@ -22,9 +24,12 @@ class OthersProfile extends Component {
     const { id } = this.props.match.params;
     ProfileService.getOthersProfile(id)
       .then((data) => {
+        console.log(data)
         this.setState({
           username: data[1].username,
           profileImg: data[1].profileImg,
+          profileStatus: data[1].profileStatus,
+          following: data[1].following,
           posts: data[0],
           isLoading: false,
         })
@@ -83,14 +88,16 @@ class OthersProfile extends Component {
   }
 
   render() {
-    const { username, profileImg } = this.state;
+    const { username, profileImg, profileStatus,following } = this.state;
     return (
       <div >
-        <div style={{background:'wheat',display:'flex', padding:'2rem'}}>
+        <div style={{display:'flex', padding:'2rem'}}>
           <img style={{height:'3rem', width:'3rem', borderRadius:'10px'}} src={profileImg} />
           <h3>
             {username}
           </h3>
+          <h5>{profileStatus}</h5>
+          <h5>following: {following.length}</h5>
           {this.isFollowing()}
         </div>
         <div className='image-container'>
