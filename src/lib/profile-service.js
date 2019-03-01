@@ -38,6 +38,12 @@ class Profile {
       return data
     });
   }
+  statusUpdate(status){
+    return this.profile.put('/settings', { status })
+    .then(({data}) => {
+      return data;
+    });
+  }
 }
 
 const ProfileService = new Profile();
