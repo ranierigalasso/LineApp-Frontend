@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import { Card, Button, Form, FormControl, FormGroup } from 'react-bootstrap';
+import ProfileService from '../lib/profile-service';
 
 class Settings extends Component {
-
-  handleStatusClick = () => {
-    return (
-      <div>
-        <Form>
-          <FormGroup>
-            <FormControl type='text' />
-            <Button />
-          </FormGroup>
-        </Form>
-      </div>
-    )
+  handleProfileDelete = () => {
+    ProfileService.deleteMyProfile()
+      .then((data) => {
+        // console.log(data)
+        this.props.user = null;
+        this.props.history.push('/login');
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
   render() {
-    console.log(this.props.user)
+    console.log(this.props)
+    const { logout } = this.props;
     const { profileImg, username, profileStatus } = this.props.user;
     return (
       <div>
@@ -30,8 +30,15 @@ class Settings extends Component {
             <Button onClick={this.handleStatusClick}>Update</Button>
             </Card.Text>
           </Card.Body>
-          
-        </Card>;
+        </Card>
+        <Button onClick={logout} variant="primary" type="submit">
+          Log Out
+        </Button>
+        <Form onSubmit={this.handleProfileDelete}>
+          <Button variant="danger" type="submit">
+            Delete Profile
+          </Button>
+        </Form>
       </div>
     )
   }

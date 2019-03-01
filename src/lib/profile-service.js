@@ -14,6 +14,12 @@ class Profile {
       return data;
     });
   }
+  deleteMyProfile () {
+    return this.profile.delete('/profile/me')
+    .then(({data}) => {
+      return data;
+    });
+  }
   getOthersProfile(id) {
     return this.profile.get(`/profile/${id}`)
     .then(({data}) => {

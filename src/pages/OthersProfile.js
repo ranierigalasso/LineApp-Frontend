@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import ProfileService from '../lib/profile-service';
 import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+import '../stylesheets/Profile.css';
 
 class OthersProfile extends Component {
   state = {
@@ -33,9 +36,9 @@ class OthersProfile extends Component {
 
   renderPosts = () => {
     return this.state.posts.map((post,index) => 
-      <div key={index}>
-        <img src={post.imageUrl} style={{width:'7.5rem'}}/>
-      </div>
+      <Link className='image' key={index} to={`/post/${post._id}`}>
+          <img src={post.imageUrl} />
+      </Link>
   )}
 
   handleFormFollow = (event) => {
@@ -90,7 +93,7 @@ class OthersProfile extends Component {
           </h3>
           {this.isFollowing()}
         </div>
-        <div style={{display:'flex', justifyContent:'space-around'}}>
+        <div className='image-container'>
           {this.renderPosts()}
         </div>
       </div>

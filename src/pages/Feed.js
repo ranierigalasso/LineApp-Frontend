@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import FeedService from '../lib/feed-service';
+import { Link } from 'react-router-dom';
 
 import '../stylesheets/Feed.css';
 
@@ -28,14 +29,12 @@ class Feed extends Component {
 
   renderPosts = () => {
     return this.state.posts.map((post,index) => 
-      <div className='post-box' key={index}>
-        <h5>{post.location}</h5>
-        <img src={post.imageUrl} alt='feed'/>
-        <div>
-          <p>user to display</p>
-          <p>{post.description}</p>
+      <Link key={index} to={`/post/${post._id}`}>
+        <div className='post-box'>
+          <h5>{post.location}</h5>
+          <img src={post.imageUrl} alt='feed'/>
         </div>
-      </div>
+      </Link>
   )}
 
   render() {

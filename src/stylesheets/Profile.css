@@ -1,0 +1,13 @@
+.image-container {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  align-items: center;
+  padding: 1rem .5rem;
+}
+.image, .image * {
+  width: 100%;
+  height: 100%;
+}
