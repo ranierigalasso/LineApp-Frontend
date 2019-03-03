@@ -4,6 +4,7 @@
   background: white;
   position: fixed;
   width: 100%;
+  border-bottom: .1px solid #007eff;
 }
 .logo {
   height: 10vh;
@@ -15,7 +16,7 @@
   display: flex;
   justify-content: space-evenly;
   text-align: center;
-  background: #4381C1;
+  background: #007eff;
 }
 .bottom-item {
   width: 20%;

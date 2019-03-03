@@ -11,3 +11,46 @@
   width: 100%;
   height: 100%;
 }
+.profile-container {
+  color: #007eff;
+  border-bottom: .25px solid #007eff;
+}
+.profile-img {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.profile-img img {
+  margin: 1rem 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+}
+.profile-img h5 {
+  padding-top:1rem;
+}
+
+#username {
+  font-size: 1rem;
+}
+#status {
+  font-size: .75rem;
+  font-weight: 5;
+}
+#following {
+  text-align: center;
+  margin-top:1.5rem;
+}
+#following h5 {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+.username {
+  padding: 0 1rem;
+}
+.btn-primary {
+  margin-top:1.75rem!important;
+}
+button#follow-unfollow.btn.btn-primary {
+}

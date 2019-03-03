@@ -1,0 +1,9 @@
+.post-edit {
+  margin: 0 .25rem;
+}
+.edit-buttons {
+  display: flex;
+}
+.edit-buttons button {
+  margin-right: .5rem;
+}

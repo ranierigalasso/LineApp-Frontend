@@ -4,6 +4,14 @@ import { withAuth } from '../components/AuthProvider';
 import SearchService from '../lib/search-service';
 import { Link } from 'react-router-dom';
 
+import '../stylesheets/Search.css';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faEye);
+
 class Search extends Component {
   state = {
     users: [],
@@ -33,8 +41,8 @@ class Search extends Component {
       <div style={{display:'flex', justifyContent: 'space-between'}} key={index}>
         <h3>{user.username}</h3>
           <Link to={`/profile/${user._id}`}>
-            <Button variant="success" type="submit">
-             View
+            <Button variant="primary" type="submit">
+              <FontAwesomeIcon icon="eye" size="1x" />              
             </Button>
           </Link> 
       </div>
@@ -65,10 +73,10 @@ class Search extends Component {
     const newUsers = this.handleNewSearch();
     const { search } = this.state;
     return (
-      <div>
-        <div>
-          <Form >
-            <Form.Group controlId="formBasicUsername">
+      <div className='search-container'>
+        <div >
+          <Form id='search-input'>
+            <Form.Group controlId="formBasicSearch">
               <Form.Control type="text" value={search} onChange={this.handleChange} placeholder="Search users..." />
             </Form.Group>
           </Form>

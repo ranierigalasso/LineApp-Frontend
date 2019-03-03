@@ -1,0 +1,9 @@
+.create-container {
+  margin: 0 .25rem;
+}
+#create-btn {
+  text-align: center;
+}
+#create-btn button {
+  padding: .5rem 3rem;
+}

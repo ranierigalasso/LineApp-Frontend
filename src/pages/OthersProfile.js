@@ -70,16 +70,16 @@ class OthersProfile extends Component {
     const { id } = this.props.match.params;
     if(this.props.user.following.includes(id)) {
       return (
-        <Form onSubmit={this.handleFormUnfollow}>
-          <Button variant="primary" type="submit">
+        <Form  onSubmit={this.handleFormUnfollow}>
+          <Button id='follow-unfollow' variant="primary" type="submit">
             Unfollow
           </Button>
         </Form>
       ) 
     } else {
       return (
-        <Form onSubmit={this.handleFormFollow}>
-          <Button variant="primary" type="submit">
+        <Form  onSubmit={this.handleFormFollow}>
+          <Button id='follow-unfollow' variant="primary" type="submit">
             Follow
           </Button>
         </Form>
@@ -91,14 +91,19 @@ class OthersProfile extends Component {
     const { username, profileImg, profileStatus,following } = this.state;
     return (
       <div >
-        <div style={{display:'flex', padding:'2rem'}}>
-          <img style={{height:'3rem', width:'3rem', borderRadius:'10px'}} src={profileImg} />
-          <h3>
-            {username}
-          </h3>
-          <h5>{profileStatus}</h5>
-          <h5>following: {following.length}</h5>
-          {this.isFollowing()}
+        <div className='profile-container'>
+          <div className='profile-img'>
+            <img  src={profileImg}  alt='profile-img'/>
+            <div id='following'>
+              <h5>{following.length}</h5>
+              <h5>following</h5>
+            </div>
+            {this.isFollowing()}
+          </div>
+          <div className='username'>
+            <h3 id='username'>{username}</h3>
+            <h5 id='status'>{profileStatus}</h5>
+          </div>
         </div>
         <div className='image-container'>
           {this.renderPosts()}

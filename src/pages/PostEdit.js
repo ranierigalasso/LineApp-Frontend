@@ -4,6 +4,14 @@ import { Form, Button } from 'react-bootstrap';
 import PostService from '../lib/post-service';
 import { Link } from 'react-router-dom';
 
+import '../stylesheets/PostEdit.css';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBackspace, faEdit } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faBackspace, faEdit);
+
 class PostEdit extends Component {
   state = {
     oldPost: {},
@@ -20,7 +28,7 @@ class PostEdit extends Component {
     PostService.getPostData(id)
       .then((data) => {
         let { location, imageUrl, description} = data;
-        console.log(location);
+        // console.log(location);
         this.setState({
           location,
           imageUrl,
@@ -58,7 +66,7 @@ class PostEdit extends Component {
     const { location, imageUrl, description } = this.state;
     const { id } = this.props.match.params;
     return (
-      <div>
+      <div className='post-edit'>
         <Form onSubmit={this.handleFormSubmit}>
           <Form.Group controlId="formBasicLocation">
             <Form.Control type="text" name="location" value={location} onChange={this.handleChange} placeholder="Location" />
@@ -69,15 +77,17 @@ class PostEdit extends Component {
           <Form.Group controlId="formBasicDescription">
             <Form.Control type="text" name="description" value={description} onChange={this.handleChange} placeholder="Description" />
           </Form.Group>
-          <Button variant="success" type="submit">
-            Edit
-          </Button>
+          <div className='edit-buttons'>
+            <Link to={`/post/${id}`}>
+              <Button variant="primary" type="submit">
+                <FontAwesomeIcon icon="backspace" size="1x" />              
+              </Button>
+            </Link>
+            <Button variant="primary" type="submit">
+              <FontAwesomeIcon icon="edit" size="1x" />              
+            </Button>
+          </div>
         </Form>
-        <Link to={`/post/${id}`}>
-          <Button variant="primary" type="submit">
-            Back
-          </Button>
-        </Link>
       </div>
     )
   }

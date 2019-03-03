@@ -42,13 +42,18 @@ class Profile extends Component {
     console.log(this.props)
     return (
       <div>
-        <div style={{display:'flex', padding:'2rem'}}>
-          <img style={{height:'3rem', width:'3rem', borderRadius:'10px'}} src={profileImg} />
-          <h3>
-            {username}
-          </h3>
-          <h5>{profileStatus}</h5>
-          <h5>following: {following.length}</h5>
+        <div className='profile-container'>
+          <div className='profile-img'>
+            <img  src={profileImg}  alt='profile-img'/>
+            <div id='following'>
+              <h5>{following.length}</h5>
+              <h5>following</h5>
+            </div>
+          </div>
+          <div className='username'>
+            <h3 id='username'>{username}</h3>
+            <h5 id='status'>{profileStatus}</h5>
+          </div>
         </div>
         <div className='image-container'>
           {this.renderPosts()}

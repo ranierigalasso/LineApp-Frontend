@@ -32,6 +32,30 @@ class Post {
       return data;
     });
   }
+  createComment (data,id) {
+    return this.chosenPost.post(`/post/${id}/comment`, { data })
+    .then(({data}) => {
+      return data;
+    });
+  }
+  getComments (id) {
+    return this.chosenPost.get(`/post/${id}/comment`)
+    .then(({data}) => {
+      return data;
+    });
+  }
+  deleteComment(paramsId, commentId){
+    return this.chosenPost.post(`/post/${paramsId}/comment/delete`,{ commentId })
+    .then(({data}) => {
+      return data;
+    });
+  }
+  addLike(paramsId, userId) {
+    return this.chosenPost.post(`/post/${paramsId}/comment/like`, { userId })
+    .then(({data}) => {
+      return data;
+    });
+  }
 }
 
 const PostService = new Post();

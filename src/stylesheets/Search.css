@@ -1,0 +1,9 @@
+.search-container {
+  margin: 0 .25rem;
+}
+#search-input {
+  display: block!important;
+}
+.search-container h3 {
+  margin-top: 1rem;
+}
