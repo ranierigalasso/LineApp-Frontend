@@ -16,6 +16,7 @@
  .username-img {
   display: flex;
  }
+ 
  .username-img img {
    margin-top:1rem;
    margin-left:.25rem;

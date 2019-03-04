@@ -18,7 +18,7 @@ class Feed extends Component {
   getPosts = () => {
     FeedService.getFeed()
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         this.setState({
           posts: data,
           isLoading: false,
