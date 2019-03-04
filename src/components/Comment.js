@@ -59,6 +59,7 @@ class Comment extends Component {
   displayComments = () => {
     const { comments } = this.state;
     const { userId } = this.props;
+    // console.log(comments)
     return comments.map((comment,index) => {
       if(comment.creatorId._id !== userId){
         return (
@@ -80,6 +81,7 @@ class Comment extends Component {
                 <img src={comment.creatorId.profileImg} alt='profile-pic' />
                 <h3><strong>{comment.creatorId.username}</strong></h3>
               </div>
+              <p>{new Date(comment.createdAt).toDateString()}</p>
               <DeleteComment commentId={comment._id} paramsId={this.props.paramsId}/>
             </div>
             <p id='comment'>'{comment.comment}'</p>

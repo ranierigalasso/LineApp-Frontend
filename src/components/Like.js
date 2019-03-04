@@ -14,16 +14,35 @@ import { faMinusCircle, faEdit, faCommentDots } from '@fortawesome/free-solid-sv
 library.add(faMinusCircle, faEdit, faCommentDots);
 
 class Like extends Component {
-  state = {
-    likes: this.props.likes,
+  state ={
+    likes:0,
   }
-
+  
+  componentDidMount = () => {
+    this.getLikes()
+  }
+  
+  getLikes = () => {
+    let id = this.props.paramsId;
+    PostService.getPostLikes(id)
+      .then((data) => {
+        console.log(data)
+        this.setState({
+          likes: data.likes,
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+  
+  
   handleLikeClick = (e) => {
     e.preventDefault();
     const {paramsId, userId} = this.props;
     PostService.addLike(paramsId,userId)
     .then((data) =>{
-      console.log(data)
+      // console.log(data)
       this.setState({
         likes: data.likes,
       })
@@ -33,7 +52,7 @@ class Like extends Component {
     })    
   }
   render() {
-    console.log(this.state)
+    console.log(this.state.likes)
     return (
       <div style={{display: 'flex'}}>
         <Form onSubmit={this.handleLikeClick}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import FeedService from '../lib/feed-service';
 import { Link } from 'react-router-dom';
-
+import Like from '../components/Like';
 import '../stylesheets/Feed.css';
 
 class Feed extends Component {
@@ -18,7 +18,7 @@ class Feed extends Component {
   getPosts = () => {
     FeedService.getFeed()
       .then((data) => {
-        // console.log(data)
+        console.log(data);
         this.setState({
           posts: data,
           isLoading: false,
@@ -41,6 +41,7 @@ class Feed extends Component {
           <img src={post.imageUrl} alt='feed'/>
         </div>
       </Link>
+      <Like userId={this.props.user._id} paramsId={post._id}/>
     </div>
   )}
 

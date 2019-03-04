@@ -44,6 +44,12 @@ class Profile {
       return data;
     });
   }
+  changeProfilePicture(data){
+    return this.profile.post(`/settings/picture`, { data })
+    .then(({data}) => {
+      return data
+    });
+  }
 }
 
 const ProfileService = new Profile();

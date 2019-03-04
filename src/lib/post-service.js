@@ -50,8 +50,14 @@ class Post {
       return data;
     });
   }
+  getPostLikes(id) {
+    return this.chosenPost.get(`/post/${id}/like`)
+    .then(({data}) => {
+      return data;
+    });
+  }
   addLike(paramsId, userId) {
-    return this.chosenPost.post(`/post/${paramsId}/comment/like`, { userId })
+    return this.chosenPost.post(`/post/${paramsId}/like`, { userId })
     .then(({data}) => {
       return data;
     });

@@ -34,12 +34,10 @@ class Post extends Component {
     const { id } = this.props.match.params;
     PostService.getPost(id)
       .then((data) => {
-        console.log(data)
         const {createdAt, description, imageUrl, location} = data;
         const creatorId = data.creatorId._id;
         const username = data.creatorId.username;
         const profileImg = data.creatorId.profileImg;
-        const likes = data.likes;
         this.setState({
           creatorId,
           createdAt,
@@ -48,7 +46,6 @@ class Post extends Component {
           location,
           username,
           profileImg,
-          likes,
         })
       })
       .catch((error) => {
@@ -92,7 +89,7 @@ class Post extends Component {
   }
  
   render() {
-    const { username, createdAt, description, imageUrl, location, profileImg} = this.state;   
+    const { username, createdAt, description, imageUrl, location, profileImg} = this.state;  
     return (
       <div id='post'>
         
@@ -108,7 +105,7 @@ class Post extends Component {
         <h5 id='location'>{location}</h5>
         <img src={imageUrl} alt='selected-post'/>
         <div className='bottom-post'>
-          <Like userId={this.props.user._id} paramsId={this.props.match.params.id} likes={this.state.likes}/>
+          <Like userId={this.props.user._id} paramsId={this.props.match.params.id} />
           <p id='date'>{new Date(createdAt).toDateString()}</p>
         </div>
         <div id='description'>

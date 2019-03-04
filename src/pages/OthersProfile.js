@@ -24,7 +24,7 @@ class OthersProfile extends Component {
     const { id } = this.props.match.params;
     ProfileService.getOthersProfile(id)
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         this.setState({
           username: data[1].username,
           profileImg: data[1].profileImg,
@@ -42,7 +42,7 @@ class OthersProfile extends Component {
   renderPosts = () => {
     return this.state.posts.map((post,index) => 
       <Link className='image' key={index} to={`/post/${post._id}`}>
-          <img src={post.imageUrl} />
+          <img src={post.imageUrl} alt='post'/>
       </Link>
   )}
 
@@ -68,22 +68,29 @@ class OthersProfile extends Component {
   }
   isFollowing = () => {
     const { id } = this.props.match.params;
-    if(this.props.user.following.includes(id)) {
-      return (
-        <Form  onSubmit={this.handleFormUnfollow}>
-          <Button id='follow-unfollow' variant="primary" type="submit">
-            Unfollow
-          </Button>
-        </Form>
-      ) 
+    const loggedUser = this.props.user._id;
+    console.log(loggedUser);
+    console.log(id)
+    if(loggedUser === id) {
+      //
     } else {
-      return (
-        <Form  onSubmit={this.handleFormFollow}>
-          <Button id='follow-unfollow' variant="primary" type="submit">
-            Follow
-          </Button>
-        </Form>
-      )
+      if(this.props.user.following.includes(id)) {
+        return (
+          <Form  onSubmit={this.handleFormUnfollow}>
+            <Button id='follow-unfollow' variant="primary" type="submit">
+              Unfollow
+            </Button>
+          </Form>
+        ) 
+      } else {
+        return (
+          <Form  onSubmit={this.handleFormFollow}>
+            <Button id='follow-unfollow' variant="primary" type="submit">
+              Follow
+            </Button>
+          </Form>
+        )
+      }
     }
   }
 

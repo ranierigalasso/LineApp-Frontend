@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import { Card, Button, Form, FormControl, FormGroup } from 'react-bootstrap';
 import ProfileService from '../lib/profile-service';
+import FirebaseProfileImage from '../components/FirebaseProfileImage';
 
 import '../stylesheets/Settings.css';
 
@@ -12,7 +13,7 @@ import { faPen, faSignOutAlt, faTrashAlt } from '@fortawesome/free-solid-svg-ico
 library.add(faPen, faSignOutAlt, faTrashAlt);
 
 class Settings extends Component {
-  state = {
+  state= {
     status: '',
   }
 
@@ -20,7 +21,6 @@ class Settings extends Component {
     this.getStatus()
   }
   getStatus = () => {
-    console.log(this.props.user)
     const { profileStatus } = this.props.user;
     this.setState({
       status: profileStatus,
@@ -36,9 +36,7 @@ class Settings extends Component {
     const {status} = this.state;
     ProfileService.statusUpdate(status)
       .then((data) => {
-        // console.log(data);
         this.props.setUser(data);
-        // console.log(this.state.status)
         this.props.history.push(`/settings`);
       })
       .catch((error) => {
@@ -60,10 +58,12 @@ class Settings extends Component {
     const { logout } = this.props;
     const { profileImg, username } = this.props.user;
     const { status } = this.state;
+    console.log(this.props)
     return (
       <div className='settings-container'>
         <Card>
           <Card.Img id='image' src={profileImg} />
+          <FirebaseProfileImage userId={this.props.user._id}/>
           <Card.Body>
             <Card.Title>Hey, {username}</Card.Title>
             <Form onSubmit={this.handleStatusSubmit}>
