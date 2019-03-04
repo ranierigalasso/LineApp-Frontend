@@ -1,8 +1,6 @@
 .settings-container {
   width: 100%;
   color: #007bff;
-}
-.card {
   padding: 1rem;
   margin: .25rem;
 }
@@ -10,9 +8,9 @@
   border-radius: 100%!important;
   padding: 0 3rem!important;
 }
-form {
+/* form {
   display:flex!important;
-}
+} */
 .bottom-btns {
   display: flex;
   justify-content: space-between;

@@ -5,7 +5,7 @@ import ProfileService from '../lib/profile-service';
 import { Card, Button, Form, FormControl, FormGroup } from 'react-bootstrap';
 import { withAuth } from './AuthProvider';
 
-import '../stylesheets/Spinner.css';
+import '../stylesheets/ImageUpload.css';
 import '../lib/firebase-config'
 
 class FirebaseProfileImage extends Component {
@@ -57,9 +57,9 @@ class FirebaseProfileImage extends Component {
   };
   render() {
   return (
-  <div>
-    <form style={{display:'flex',justifyContent:'center'}}>
-      <label style={{width:'6rem',backgroundColor: '#007eff', color: 'white', padding: '0', borderRadius: '4rem', pointer: 'cursor'}}>
+  <div className='upload-container'>
+    <form id='create-form'>
+      <label id='upload-label'>
         <FileUploader
           accept="image/*"
           name="avatar"
@@ -73,7 +73,6 @@ class FirebaseProfileImage extends Component {
       </label>
     </form>
     {this.updateButton()}
-
   </div>
   );
 }

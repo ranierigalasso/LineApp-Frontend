@@ -42,9 +42,14 @@ img {
   margin: 0 .25rem ;
 }
 button.btn.btn-primary {
-  margin-top:1rem!important;
+  /* margin-top:1rem!important; */
 }
-
+#comment-btn {
+  background: #007bff;
+  border-radius: 5px;
+  padding: 0 .5rem;
+  color: white;
+}
 #like {
   background: white;
   border: 1px solid #007bff;
@@ -69,9 +74,7 @@ button.btn.btn-primary {
 #comment {
   display: flex;
 }
-#comment button {
 
-}
 input.form-control {
   margin-top:1rem!important;
   margin-right: .25rem;
@@ -106,4 +109,19 @@ input.form-control {
 .top-comment-container {
   box-shadow: 0 0 2rem rgba(0,0,0,.1);
 
+}
+#like-container {
+  display: flex;
+  vertical-align: center;
+}
+#like-container form {
+  margin-top:0;
+}
+#like-container form button {
+  margin: .5rem .25rem;
+}
+#like-container span {
+  margin: .5rem .25rem;
+  color: #007bff;
+  font-size: 1.25rem;
 }

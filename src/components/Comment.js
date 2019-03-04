@@ -69,6 +69,7 @@ class Comment extends Component {
                 <img src={comment.creatorId.profileImg} alt='profile-pic' />
                 <h3><strong>{comment.creatorId.username}</strong></h3>
               </div>
+              <h3><strong>{comment.creatorId.username}</strong></h3>
             </div>
             <p id='comment'>'{comment.comment}'</p>
           </div>
@@ -97,9 +98,12 @@ class Comment extends Component {
       <div>
         <Form id='comment' onSubmit={this.handleCommentSubmit}>
           <Form.Control type="text" name="comment" value={comment} onChange={this.handleCommentChange} placeholder="Comment ..." />
-          <Button variant="primary" type="submit">
+          <button id='comment-btn' variant="primary" type="submit">
             <FontAwesomeIcon icon="comment-dots" size="1x" />              
-          </Button>          
+          </button> 
+          {/* <Button variant="primary" type="submit">
+            <FontAwesomeIcon icon="comment-dots" size="1x" />              
+          </Button>           */}
         </Form>
         {this.displayComments()}
       </div>

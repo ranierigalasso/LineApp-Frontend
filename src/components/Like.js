@@ -54,11 +54,14 @@ class Like extends Component {
   render() {
     console.log(this.state.likes)
     return (
-      <div style={{display: 'flex'}}>
+      <div id='like-container'>
         <Form onSubmit={this.handleLikeClick}>
-          <Button id="like" type='submit'>
+          <button id="like" type='submit'>
             <img  src={require('../images/like.png')}  alt='like'/>
-          </Button>
+          </button>
+          {/* <Button id="like" type='submit'>
+            <img  src={require('../images/like.png')}  alt='like'/>
+          </Button> */}
         </Form>
         <span>{this.state.likes}</span>
       </div>

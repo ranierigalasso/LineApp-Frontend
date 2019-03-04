@@ -4,6 +4,7 @@
   position: relative;
   width: 64px;
   height: 64px;
+  margin:0 auto;
 }
 .lds-spinner div {
   transform-origin: 32px 32px;
@@ -75,4 +76,28 @@
   100% {
     opacity: 0;
   }
+}
+#upload-label{
+width: 6rem;
+background: #007bff;
+color: white;
+padding: 0;
+border-radius: 5px;
+padding: 1rem 0;
+overflow: hidden;
+}
+
+form {
+  margin-top:1rem;
+  /* display: flex;
+  justify-content: center; */
+  align-items: center;
+}
+#create-form {
+  display: flex!important;
+  flex-direction: column!important;
+}
+.upload-container {
+  display: flex;
+  flex-direction: column;
 }

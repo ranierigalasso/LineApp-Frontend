@@ -61,7 +61,6 @@ class Settings extends Component {
     console.log(this.props)
     return (
       <div className='settings-container'>
-        <Card>
           <Card.Img id='image' src={profileImg} />
           <FirebaseProfileImage userId={this.props.user._id}/>
           <Card.Body>
@@ -69,21 +68,21 @@ class Settings extends Component {
             <Form onSubmit={this.handleStatusSubmit}>
                 <Form.Control type="text" name="status" value={status} onChange={this.handleStatusChange} />                
                 <Button type='submit'>
-                  <FontAwesomeIcon icon="pen" size="1x" />                                            
+                  {/* <FontAwesomeIcon icon="pen" size="1x" />                                             */}
+                  Update Status
                 </Button>
             </Form>
             <div className='bottom-btns'>
-              <Button onClick={logout} variant="primary" type="submit">
-                <FontAwesomeIcon icon="sign-out-alt" size="1x" />                                            
-              </Button>
               <Form onSubmit={this.handleDeleteSubmit}>
                 <Button variant="primary" type="submit">
                   <FontAwesomeIcon icon="trash-alt" size="1x" />                              
                 </Button>
               </Form>
+              <Button onClick={logout} variant="primary" type="submit">
+                <FontAwesomeIcon icon="sign-out-alt" size="1x" />                                            
+              </Button>
             </div>
           </Card.Body>
-        </Card>
       </div>
     )
   }
