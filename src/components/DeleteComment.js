@@ -29,9 +29,12 @@ class DeleteComment extends Component {
     return (
       <div>
         <Form onSubmit={this.handleCommentDelete}>
-          <Button variant="primary" type='submit'>
+          <button className='universal-button' variant="primary" type='submit'>
             <FontAwesomeIcon icon="minus-circle" size="1x" />                            
-          </Button>
+          </button>
+          {/* <Button variant="primary" type='submit'>
+            <FontAwesomeIcon icon="minus-circle" size="1x" />                            
+          </Button> */}
         </Form> 
       </div>
     )

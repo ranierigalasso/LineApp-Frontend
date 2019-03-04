@@ -59,11 +59,8 @@ class Like extends Component {
           <button id="like" type='submit'>
             <img  src={require('../images/like.png')}  alt='like'/>
           </button>
-          {/* <Button id="like" type='submit'>
-            <img  src={require('../images/like.png')}  alt='like'/>
-          </Button> */}
         </Form>
-        <span>{this.state.likes}</span>
+        <span>{this.state.likes} shaka</span>
       </div>
     )
   }

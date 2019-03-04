@@ -98,12 +98,9 @@ class Comment extends Component {
       <div>
         <Form id='comment' onSubmit={this.handleCommentSubmit}>
           <Form.Control type="text" name="comment" value={comment} onChange={this.handleCommentChange} placeholder="Comment ..." />
-          <button id='comment-btn' variant="primary" type="submit">
+          <button className='universal-button' variant="primary" type="submit">
             <FontAwesomeIcon icon="comment-dots" size="1x" />              
           </button> 
-          {/* <Button variant="primary" type="submit">
-            <FontAwesomeIcon icon="comment-dots" size="1x" />              
-          </Button>           */}
         </Form>
         {this.displayComments()}
       </div>

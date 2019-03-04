@@ -37,10 +37,10 @@ class FirebaseProfileImage extends Component {
     if( isUploading === true) {
       return <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     } else if (avatarURL !== '') {
-      return <Form onSubmit={this.handlePictureChange}>
-        <Button type='submit'>
+      return <Form id='settings-update' onSubmit={this.handlePictureChange}>
+        <button className='universal-button' id='settings-update' type='submit'>
         Update                                       
-        </Button>
+        </button>
       </Form>
     } 
   }

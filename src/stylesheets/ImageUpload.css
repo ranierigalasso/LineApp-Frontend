@@ -88,7 +88,7 @@ overflow: hidden;
 }
 
 form {
-  margin-top:1rem;
+  /* margin-top:1rem; */
   /* display: flex;
   justify-content: center; */
   align-items: center;
@@ -100,4 +100,8 @@ form {
 .upload-container {
   display: flex;
   flex-direction: column;
+}
+#settings-update {
+  display: flex;
+  justify-content: center;
 }

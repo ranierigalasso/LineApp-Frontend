@@ -41,9 +41,7 @@ img {
 .edit-delete a {
   margin: 0 .25rem ;
 }
-button.btn.btn-primary {
-  /* margin-top:1rem!important; */
-}
+
 #comment-btn {
   background: #007bff;
   border-radius: 5px;
@@ -123,5 +121,5 @@ input.form-control {
 #like-container span {
   margin: .5rem .25rem;
   color: #007bff;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
