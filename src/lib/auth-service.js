@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { eventNames } from 'cluster';
 
 class Auth {
   constructor() {
