@@ -28,7 +28,6 @@ class PostEdit extends Component {
     PostService.getPostData(id)
       .then((data) => {
         let { location, imageUrl, description} = data;
-        // console.log(location);
         this.setState({
           location,
           imageUrl,
@@ -71,9 +70,9 @@ class PostEdit extends Component {
           <Form.Group controlId="formBasicLocation">
             <Form.Control type="text" name="location" value={location} onChange={this.handleChange} placeholder="Location" />
           </Form.Group>
-          <Form.Group controlId="formBasicImage">
+          {/* <Form.Group controlId="formBasicImage">
             <Form.Control type="text" name="imageUrl" value={imageUrl} onChange={this.handleChange} placeholder="Image URL" />
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group controlId="formBasicDescription">
             <Form.Control type="text" name="description" value={description} onChange={this.handleChange} placeholder="Description" />
           </Form.Group>

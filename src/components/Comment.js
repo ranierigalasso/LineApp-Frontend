@@ -69,7 +69,6 @@ class Comment extends Component {
                 <img src={comment.creatorId.profileImg} alt='profile-pic' />
                 <h3><strong>{comment.creatorId.username}</strong></h3>
               </div>
-              <h3><strong>{comment.creatorId.username}</strong></h3>
             </div>
             <p id='comment'>'{comment.comment}'</p>
           </div>

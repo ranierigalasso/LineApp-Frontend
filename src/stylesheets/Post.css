@@ -64,7 +64,7 @@ img {
   margin: 0 .25rem;
 }
 #date {
-  padding-top:1rem;
+  padding-top:.5rem;
 }
 #description {
   margin: .5rem .25rem;
@@ -94,6 +94,9 @@ input.form-control {
   font-size: 1rem;
   margin-top: 1.5rem;
 }
+.comment-container p {
+  margin-top: 1rem;
+}
 #comment-user {
   display: flex;
 }
@@ -106,7 +109,9 @@ input.form-control {
 }
 .top-comment-container {
   box-shadow: 0 0 2rem rgba(0,0,0,.1);
-
+}
+.top-comment-container p {
+  padding: .25rem;
 }
 #like-container {
   display: flex;

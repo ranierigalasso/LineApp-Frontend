@@ -72,7 +72,7 @@ class Post extends Component {
       return (
         <div className='edit-delete'>
           <Form onSubmit={this.handleFormDelete}>
-          <button className='universal-button' variant="primary" type="submit">
+            <button className='universal-button' variant="primary" type="submit">
               <FontAwesomeIcon icon="minus-circle" size="1x" />              
             </button>
             {/* <Button variant="primary" type="submit">
