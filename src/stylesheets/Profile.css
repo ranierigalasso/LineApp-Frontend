@@ -54,3 +54,23 @@
 }
 button#follow-unfollow.btn.btn-primary {
 }
+
+.buttons-container {
+  display: flex;
+}
+.profile-button {
+  color: white;
+  background: #007bff;
+  border-radius: 5px;
+  padding: .5rem 4rem;
+  margin-top: .75rem;
+  width: 100%;
+  margin: 0;
+}
+.mapboxgl-canvas{
+  width: 100%!important;
+  height: 15rem!important;
+}
+#map{
+  padding: 0!important;
+}

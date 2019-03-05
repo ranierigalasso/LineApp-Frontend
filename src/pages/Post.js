@@ -136,7 +136,7 @@ class Post extends Component {
             <th></th>
             <th>Now</th>
             <th>Tommorow</th>
-            <th>{date.toDateString()}</th>
+            <th>{date.toLocaleDateString()}</th>
           </tr>
         </thead>
         <tbody>
