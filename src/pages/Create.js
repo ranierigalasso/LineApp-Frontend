@@ -3,6 +3,7 @@ import { withAuth } from '../components/AuthProvider';
 import CreateService from '../lib/create-service';
 import { Form, Button } from 'react-bootstrap';
 import FirebaseImage from '../components/FirebaseImage';
+
 import '../stylesheets/Create.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -16,20 +17,22 @@ class Create extends Component {
     location: '',
     imageUrl: '',
     description: '',
+    lat:'',
+    long:'',
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const {location, imageUrl, description} = this.state;
+    const {location, imageUrl, description, lat, long} = this.state;
     const body = {
       location,
       imageUrl,
       description,
+      lat,
+      long,
     }
-    // console.log('before createservice')
     CreateService.createPost(body)
       .then(() => {
-        // console.log('done')
         this.props.history.push(`/feed`);
       })
       .catch((error) => {console.log(error.message)}) 
@@ -48,14 +51,27 @@ class Create extends Component {
   }
   renderImage = () => {
     if(this.state.imageUrl !== ''){
-      return <img src={this.state.imageUrl} alt='image-upload'/>
+      return <img src={this.state.imageUrl} alt='upload'/>
     }
   }
+  handleGeolocation = () => {
+    window.navigator.geolocation.getCurrentPosition((success) => {
+      const lat = success.coords.latitude;
+      const long = success.coords.longitude;
+      this.setState({
+        lat,
+        long,
+      })
+    }, (error) => {
+      console.log(error);
+    });
+  }
   render() {
-    const { location, imageUrl, description } = this.state;
+    const { location, description } = this.state;
     console.log(this.state)
     return (
       <div className='create-container'>
+        {this.handleGeolocation()}
         {this.renderImage()}
         <FirebaseImage userId={this.props.user._id} imageUrlGetter={this.imageUrlGetter}/>
         <Form onSubmit={this.handleFormSubmit}>
