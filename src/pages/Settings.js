@@ -68,7 +68,6 @@ class Settings extends Component {
             <Form onSubmit={this.handleStatusSubmit}>
                 <Form.Control type="text" name="status" value={status} onChange={this.handleStatusChange} />                
                 <Button type='submit'>
-                  {/* <FontAwesomeIcon icon="pen" size="1x" />                                             */}
                   Update Status
                 </Button>
             </Form>
