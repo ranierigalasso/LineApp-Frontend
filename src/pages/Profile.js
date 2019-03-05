@@ -44,7 +44,7 @@ class Profile extends Component {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11'
     });
-    console.log(map)
+    // console.log(map)
     
     const {posts} = this.state;
     posts.map((post,index) => {
@@ -99,6 +99,8 @@ class Profile extends Component {
     if(!toggle) {
       return this.renderPosts();
     } else if (toggle) {
+      // document.getElementById('map').innerHTML = '';
+      document.getElementById('map').innerHTML = '';
       return this.renderMap();
     }
   }
