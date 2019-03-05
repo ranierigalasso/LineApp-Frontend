@@ -39,7 +39,9 @@ class FirebaseProfileImage extends Component {
   <div className='upload-container'>
     <form id='create-form'>
       <label id='upload-label' >
+        Upload Photo
         <FileUploader
+          hidden
           accept="image/*"
           name="avatar"
           randomizeFilename

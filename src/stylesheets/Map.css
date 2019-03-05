@@ -1,9 +1,10 @@
 .mapboxgl-canvas{
   padding:0!important;
-  padding-top: 1px!important;
   margin:0!important;
   width: 100%!important;
   height: 51%!important;
+  border: 5px solid #007bff;
+  margin-top: 1px!important;
 }
 #map{
   padding: 0!important;

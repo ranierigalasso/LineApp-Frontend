@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PostService from '../lib/post-service';
-import { Form, Button } from 'react-bootstrap';
+import { Form} from 'react-bootstrap';
 import { withAuth } from '../components/AuthProvider';
 import DeleteComment from '../components/DeleteComment';
 
@@ -32,7 +32,10 @@ class Comment extends Component {
     let id = this.props.paramsId;
     PostService.createComment(data, id)
       .then((data) => {
-        console.log(data)
+        // console.log(data)
+        this.setState({
+          comment:'',
+        })
         this.retrieveComments();
       })
       .catch((error) => {
@@ -61,7 +64,6 @@ class Comment extends Component {
   displayComments = () => {
     const { comments } = this.state;
     const { userId } = this.props;
-    // console.log(comments)
     return comments.map((comment,index) => {
       if(comment.creatorId._id !== userId){
         return (
