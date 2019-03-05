@@ -21,7 +21,8 @@ class Comment extends Component {
   componentDidMount = () => {
     this.retrieveComments();
   }
-  handleCommentSubmit = () => {
+  handleCommentSubmit = (e) => {
+    e.preventDefault();
     const {comment} = this.state;
     const { _id } = this.props.user;
     const data = {
@@ -32,6 +33,7 @@ class Comment extends Component {
     PostService.createComment(data, id)
       .then((data) => {
         console.log(data)
+        this.retrieveComments();
       })
       .catch((error) => {
         console.log(error)
@@ -82,7 +84,7 @@ class Comment extends Component {
                 <h3><strong>{comment.creatorId.username}</strong></h3>
               </div>
               <p>{new Date(comment.createdAt).toDateString()}</p>
-              <DeleteComment commentId={comment._id} paramsId={this.props.paramsId}/>
+              <DeleteComment commentId={comment._id} paramsId={this.props.paramsId} retrieveComments={this.retrieveComments}/>
             </div>
             <p id='comment'>'{comment.comment}'</p>
           </div>

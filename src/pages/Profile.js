@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import ProfileService from '../lib/profile-service';
 import { Link } from 'react-router-dom';
-import mapboxgl from 'mapbox-gl';
+import Map from '../components/Map';
 
 import '../stylesheets/Profile.css';
 
@@ -12,7 +12,6 @@ class Profile extends Component {
     isLoading: true,
     toggle: false,
     buttonName: 'Map',
-    isMapOpened: false,
   }
 
   componentDidMount() {
@@ -38,48 +37,6 @@ class Profile extends Component {
       </Link>
   )}
 
-  renderMap = () => {
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11'
-    });
-    // console.log(map)
-    
-    const {posts} = this.state;
-    posts.map((post,index) => {
-      map.loadImage('https://i.imgur.com/MK4NUzI.png', (error, image) => {
-        if (error) throw error;
-        map.addImage('custom-marker', image);
-        /* Style layer: A style layer ties together the source and image and specifies how they are displayed on the map. */
-        map.addLayer({
-          id: `markers${index}`,
-          type: 'symbol',
-          /* Source: A data source specifies the geographic coordinate where the image marker gets placed. */
-          source: {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: [
-                {
-                  type: 'Feature',
-                  properties: {"title": `${post.location}`},
-                  geometry: {
-                    type: 'Point',
-                    coordinates: [post.coords.coordinates[0], post.coords.coordinates[1]],
-                  },
-                },
-              ],
-            },
-          },
-          layout: {
-            'icon-image': 'custom-marker',
-          },
-        });
-      });
-    })
-  }
-
   togglePostsMap = () => {
     const { toggle } = this.state;
     if(toggle) {
@@ -97,17 +54,18 @@ class Profile extends Component {
   renderToggle = () => {
     const { toggle } = this.state;
     if(!toggle) {
-      return this.renderPosts();
+      return (
+        <div className='image-container'>
+        {this.renderPosts()}
+        </div>
+      )
     } else if (toggle) {
-      // document.getElementById('map').innerHTML = '';
-      document.getElementById('map').innerHTML = '';
-      return this.renderMap();
+      return <Map posts={this.state.posts}/>
     }
   }
   render() {
     const { username, profileImg,profileStatus, following } = this.props.user;
     const {buttonName} = this.state;
-    console.log(this.state.posts)
     return (
       <div>
         <div className='profile-container'>
@@ -128,10 +86,7 @@ class Profile extends Component {
             </button>
           </div>
         </div>
-        <div className='image-container'>
-          {this.renderToggle()}
-        </div>
-        <div className="container" id="map" ></div>        
+        {this.renderToggle()}
       </div>
     )
   }

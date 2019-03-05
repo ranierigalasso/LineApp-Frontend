@@ -193,7 +193,7 @@ class Post extends Component {
             <h3>{username}</h3>
           </Link>
           <button className="universal-button" onClick={this.toggleImageForecast}>
-            <FontAwesomeIcon icon="water" size="1x" /> <strong>Forecast</strong>                                     
+            <strong>Forecast</strong>                                     
           </button>
           {this.userAccess(imageUrl)}
          </div>

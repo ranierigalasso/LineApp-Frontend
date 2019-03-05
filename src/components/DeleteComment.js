@@ -12,14 +12,16 @@ import { faMinusCircle, faEdit, faCommentDots } from '@fortawesome/free-solid-sv
 library.add(faMinusCircle, faEdit, faCommentDots);
 
 class DeleteComment extends Component {
-  handleCommentDelete = () => {
+  handleCommentDelete = (e) => {
+    e.preventDefault();
     let {paramsId, commentId} = this.props;
     console.log(paramsId)
     console.log(commentId)
     PostService.deleteComment(paramsId,commentId)
       .then((data) => {
         console.log(data)
-        this.props.history.push(`/post/${paramsId}`);
+        this.props.retrieveComments();
+        // this.props.history.push(`/post/${paramsId}`);
       })
       .catch((error) => {
         console.log(error)

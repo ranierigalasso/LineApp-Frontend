@@ -67,10 +67,5 @@ button#follow-unfollow.btn.btn-primary {
   width: 100%;
   margin: 0;
 }
-.mapboxgl-canvas{
-  width: 100%!important;
-  height: 15rem!important;
-}
-#map{
-  padding: 0!important;
-}
+
+
