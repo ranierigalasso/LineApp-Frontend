@@ -76,7 +76,6 @@ class Settings extends Component {
     const { logout } = this.props;
     const { profileImg, username } = this.props.user;
     const { status } = this.state;
-    console.log(this.props)
     return (
       <div className='settings-container'>
           <Card.Img id='image' src={profileImg} />

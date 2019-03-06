@@ -49,7 +49,6 @@ class Navbar extends Component {
         </div>
       )
     } else {
-      // return <Redirect to='/login'/>
       return null
     }
   }
