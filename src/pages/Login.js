@@ -3,6 +3,9 @@ import auth from '../lib/auth-service';
 import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
+import  {callAlert} from '../actions';
+import {connect} from 'react-redux';
+
 import '../stylesheets/Auth.css';
 
 class Login extends Component {
@@ -12,14 +15,29 @@ class Login extends Component {
     password: '',
   }
 
+  componentWillUnmount = () => {
+    const {callAlert} = this.props;
+    callAlert('');    
+  }
+  
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state
-    auth.login({ username, password })
-    .then( (user) => {
-      this.props.setUser(user)
-    })
-    .catch( error => console.log(error) )
+    const {callAlert} = this.props;
+    if(password === '') {
+      callAlert('Empty password field mate!')
+    } else if (username === '') {
+      callAlert('Empty username field mate!')      
+    } else {
+      auth.login({ username, password })
+      .then( (user) => {
+        this.props.setUser(user)
+      })
+      .catch( (error) => {
+        console.log(error) 
+        callAlert('Incorrect username or password mate!')
+      })
+    }
   }
 
   handleChange = (event) => {  
@@ -46,9 +64,20 @@ class Login extends Component {
             Log In
           </Button>
         </Form>
+        <div className='alert'>
+          <p>{this.props.alert}</p>
+        </div>
       </div>
     )
   }
 }
 
-export default Login;
+function mapStateToProps ({alert}) {
+  return {alert}
+}
+
+const mapDispatchToProps = dispatch => ({
+  callAlert: (message) => dispatch(callAlert(message))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
