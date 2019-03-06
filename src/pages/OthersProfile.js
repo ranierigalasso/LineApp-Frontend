@@ -8,6 +8,7 @@ import Map from '../components/Map';
 import '../stylesheets/Profile.css';
 
 class OthersProfile extends Component {
+
   state = {
     username: '',
     profileImg: '',
@@ -27,7 +28,6 @@ class OthersProfile extends Component {
     const { id } = this.props.match.params;
     ProfileService.getOthersProfile(id)
       .then((data) => {
-        // console.log(data)
         this.setState({
           username: data[1].username,
           profileImg: data[1].profileImg,
@@ -59,6 +59,7 @@ class OthersProfile extends Component {
       })
       .catch(error => console.log(error))
   }
+
   handleFormUnfollow = (event) => {
     event.preventDefault();
     const { id } = this.props.match.params;
@@ -69,13 +70,12 @@ class OthersProfile extends Component {
       })
       .catch(error => console.log(error))
   }
+
   isFollowing = () => {
     const { id } = this.props.match.params;
     const loggedUser = this.props.user._id;
-    console.log(loggedUser);
-    console.log(id)
     if(loggedUser === id) {
-      //
+    
     } else {
       if(this.props.user.following.includes(id)) {
         return (
@@ -128,7 +128,6 @@ class OthersProfile extends Component {
   render() {
     const { username, profileImg, profileStatus,following } = this.state;
     const {buttonName} = this.state;
-    
     return (
       <div >
         <div className='profile-container'>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
-import { Card, Button, Form, FormControl, FormGroup } from 'react-bootstrap';
+import { Card, Button, Form } from 'react-bootstrap';
 import ProfileService from '../lib/profile-service';
 import FirebaseProfileImage from '../components/FirebaseProfileImage';
 
@@ -13,24 +13,28 @@ import { faPen, faSignOutAlt, faTrashAlt } from '@fortawesome/free-solid-svg-ico
 library.add(faPen, faSignOutAlt, faTrashAlt);
 
 class Settings extends Component {
-  state= {
+
+  state = {
     status: '',
   }
 
   componentDidMount = () => {
     this.getStatus()
   }
+
   getStatus = () => {
     const { profileStatus } = this.props.user;
     this.setState({
       status: profileStatus,
     })
   }
+
   handleStatusChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     })
   }
+  
   handleStatusSubmit = (event) => {
     event.preventDefault();
     const {status} = this.state;
@@ -43,6 +47,7 @@ class Settings extends Component {
         console.log(error);
       }) 
   }
+
   handleDeleteSubmit = () => {
     ProfileService.deleteMyProfile()
       .then(() => {
@@ -58,7 +63,6 @@ class Settings extends Component {
     const { logout } = this.props;
     const { profileImg, username } = this.props.user;
     const { status } = this.state;
-    console.log(this.props)
     return (
       <div className='settings-container'>
           <Card.Img id='image' src={profileImg} />

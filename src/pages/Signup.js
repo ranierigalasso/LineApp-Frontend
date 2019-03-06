@@ -8,10 +8,11 @@ import '../stylesheets/Auth.css';
 class Signup extends Component {
 
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   };
-handleFormSubmit = (event) => {
+
+  handleFormSubmit = (event) => {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
@@ -19,8 +20,8 @@ handleFormSubmit = (event) => {
     auth.signup({ username, password })
       .then( (user) => {
         this.setState({
-            username: "",
-            password: "",
+            username: '',
+            password: '',
         });
         this.props.setUser(user)
       })
@@ -37,7 +38,7 @@ handleFormSubmit = (event) => {
     const { username, password } = this.state;
     return (
       <div >
-        <img src={require('../images/login-logo.png')} />
+        <img src={require('../images/login-logo.png')} alt='full-logo'/>
         <Form className='landing-container' onSubmit={this.handleFormSubmit}>
           <Form.Group controlId="formBasicUsername">
             <Form.Control type="text" name="username" value={username} onChange={this.handleChange} placeholder="Username" />

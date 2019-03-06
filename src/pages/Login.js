@@ -6,15 +6,15 @@ import { Form, Button } from 'react-bootstrap';
 import '../stylesheets/Auth.css';
 
 class Login extends Component {
+
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state
-
     auth.login({ username, password })
     .then( (user) => {
       this.props.setUser(user)
@@ -31,7 +31,7 @@ class Login extends Component {
     const { username, password } = this.state;
     return (
       <div>
-        <img src={require('../images/login-logo.png')} />
+        <img src={require('../images/login-logo.png')} alt='full-logo' />
         <Form className='landing-container' onSubmit={this.handleFormSubmit}>
           <Form.Group controlId="formBasicUsername">
             <Form.Control type="text" name="username" value={username} onChange={this.handleChange} placeholder="Username" />

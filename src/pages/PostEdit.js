@@ -13,12 +13,14 @@ import { faBackspace, faEdit } from '@fortawesome/free-solid-svg-icons'
 library.add(faBackspace, faEdit);
 
 class PostEdit extends Component {
+
   state = {
     oldPost: {},
     location: '',
     imageUrl: '',
     description: '',
   }
+
   componentDidMount() {
     this.getPost();   
   }
@@ -49,7 +51,6 @@ class PostEdit extends Component {
     }
     PostService.editPost(body , id)
       .then(() => {
-        console.log('done')
         this.props.history.push(`/post/${id}`);
       })
       .catch((error) => {console.log(error.message)}) 
@@ -62,7 +63,7 @@ class PostEdit extends Component {
   }
 
   render() {
-    const { location, imageUrl, description } = this.state;
+    const { location, description } = this.state;
     const { id } = this.props.match.params;
     return (
       <div className='post-edit'>
@@ -70,9 +71,6 @@ class PostEdit extends Component {
           <Form.Group controlId="formBasicLocation">
             <Form.Control type="text" name="location" value={location} onChange={this.handleChange} placeholder="Location" />
           </Form.Group>
-          {/* <Form.Group controlId="formBasicImage">
-            <Form.Control type="text" name="imageUrl" value={imageUrl} onChange={this.handleChange} placeholder="Image URL" />
-          </Form.Group> */}
           <Form.Group controlId="formBasicDescription">
             <Form.Control type="text" name="description" value={description} onChange={this.handleChange} placeholder="Description" />
           </Form.Group>

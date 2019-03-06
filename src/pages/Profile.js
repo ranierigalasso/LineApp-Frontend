@@ -7,6 +7,7 @@ import Map from '../components/Map';
 import '../stylesheets/Profile.css';
 
 class Profile extends Component {
+
   state = {
     posts: [],
     isLoading: true,
@@ -51,6 +52,7 @@ class Profile extends Component {
       })  
     }
   }
+
   renderToggle = () => {
     const { toggle } = this.state;
     if(!toggle) {
@@ -63,6 +65,7 @@ class Profile extends Component {
       return <Map posts={this.state.posts}/>
     }
   }
+  
   render() {
     const { username, profileImg,profileStatus, following } = this.props.user;
     const {buttonName} = this.state;

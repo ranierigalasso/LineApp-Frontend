@@ -27,6 +27,7 @@ export const withAuth = () => (Comp) => {
 }
 
 export default class AuthProvider extends Component {
+  
   state = {
     isLogged: false,
     user: {},

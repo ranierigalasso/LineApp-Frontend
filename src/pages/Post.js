@@ -16,6 +16,7 @@ import { faMinusCircle, faEdit, faCommentDots, faWater } from '@fortawesome/free
 library.add(faMinusCircle, faEdit, faCommentDots, faWater);
 
 class Post extends Component {
+
   state = {
     creatorId: '',
     createdAt: '',
@@ -33,6 +34,7 @@ class Post extends Component {
     forecastData: null,
     loading: true,
   }
+
   componentDidMount = () => {
     this.getPost();
   }
@@ -64,8 +66,8 @@ class Post extends Component {
       })
   }
 
-  handleFormDelete = (e) => {
-    e.preventDefault();
+  handleFormDelete = (event) => {
+    event.preventDefault();
     const { id } = this.props.match.params;
     PostService.deletePost(id)
       .then(() => {
@@ -126,9 +128,9 @@ class Post extends Component {
 
   renderForecast = (imageUrl) => {
     const { forecastToggle, forecastData, loading } = this.state;
+    const date = new Date();
+    date.setDate(date.getDate() + 2);
     if(forecastToggle && !loading) {
-      var date = new Date();
-      date.setDate(date.getDate() + 2);
       return (
         <Table striped bordered hover variant="dark">
         <thead>

@@ -13,6 +13,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons'
 library.add(faEye);
 
 class Search extends Component {
+
   state = {
     users: [],
     isLoading: true,
@@ -26,7 +27,6 @@ class Search extends Component {
   getUsers = () => {
     SearchService.getUsers()
       .then((data) => {
-        //console.log(data)
         this.setState({
           users: data,
           isLoading: false,
@@ -58,11 +58,8 @@ class Search extends Component {
     let newUsers = [];
     this.state.users.map((user) => {
       const username = user.username.toLowerCase();
-      //console.log(this.state.search)
       const search = this.state.search.toLowerCase();
       if(username.includes(search)) {
-        // console.log(user);
-        // console.log(this.state.search);
         newUsers.push(user);
       }
     })

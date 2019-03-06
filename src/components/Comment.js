@@ -13,6 +13,7 @@ import { faMinusCircle, faEdit, faCommentDots } from '@fortawesome/free-solid-sv
 library.add(faMinusCircle, faEdit, faCommentDots);
 
 class Comment extends Component {
+
   state = {
     comment: '',
     comments: [],
@@ -21,18 +22,18 @@ class Comment extends Component {
   componentDidMount = () => {
     this.retrieveComments();
   }
-  handleCommentSubmit = (e) => {
-    e.preventDefault();
+
+  handleCommentSubmit = (event) => {
+    event.preventDefault();
     const {comment} = this.state;
     const { _id } = this.props.user;
+    const postId = this.props.paramsId;
     const data = {
       comment,
       userId: _id
     }
-    let id = this.props.paramsId;
-    PostService.createComment(data, id)
+    PostService.createComment(data, postId)
       .then((data) => {
-        // console.log(data)
         this.setState({
           comment:'',
         })
@@ -42,6 +43,7 @@ class Comment extends Component {
         console.log(error)
       })
   }
+
   handleCommentChange = (event) => {  
     this.setState({
       [event.target.name]: event.target.value,

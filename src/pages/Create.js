@@ -13,6 +13,7 @@ import { faShare } from '@fortawesome/free-solid-svg-icons'
 library.add(faShare);
 
 class Create extends Component {
+
   state = {
     location: '',
     imageUrl: '',
@@ -49,11 +50,13 @@ class Create extends Component {
       imageUrl: url,
     })
   }
+
   renderImage = () => {
     if(this.state.imageUrl !== ''){
       return <img src={this.state.imageUrl} alt='upload'/>
     }
   }
+
   handleGeolocation = () => {
     window.navigator.geolocation.getCurrentPosition((success) => {
       const lat = success.coords.latitude;
@@ -66,9 +69,9 @@ class Create extends Component {
       console.log(error);
     });
   }
+
   render() {
     const { location, description } = this.state;
-    console.log(this.state)
     return (
       <div className='create-container'>
         {this.handleGeolocation()}

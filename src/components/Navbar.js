@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
 
 import '../stylesheets/Navbar.css';
@@ -15,41 +15,41 @@ class Navbar extends Component {
     const { isLogged } = this.props;
     if (isLogged) {
       return (
-      <div>
-        <div className='top'>
-            <img className='logo' src={require('../images/logo.png')} />
-          </div>
-          <div className='bottom'>
-          <div className='bottom-item'>
-            <Link to='/feed'>
-              <FontAwesomeIcon icon="home" size="2x" />
-            </Link>
-          </div>
-          <div className='bottom-item'>
-            <Link to='/search'>
-              <FontAwesomeIcon icon="search" size="2x"/>
-            </Link>
-          </div>
-          <div className='bottom-item'>
-            <Link to='/create'>
-              <FontAwesomeIcon icon="plus-square" size="2x" />
-            </Link>
-          </div>
-          <div className='bottom-item'>
-            <Link to='/profile/me'>
-              <FontAwesomeIcon icon="user-alt" size="2x"/>
-            </Link>
-          </div>
-          <div className='bottom-item'>
-            <Link to='/settings'>
-              <FontAwesomeIcon icon="cog" size="2x"/>
-            </Link>
+        <div>
+          <div className='top'>
+              <img className='logo' src={require('../images/logo.png')} alt='logo'/>
+            </div>
+            <div className='bottom'>
+            <div className='bottom-item'>
+              <Link to='/feed'>
+                <FontAwesomeIcon icon="home" size="2x" />
+              </Link>
+            </div>
+            <div className='bottom-item'>
+              <Link to='/search'>
+                <FontAwesomeIcon icon="search" size="2x"/>
+              </Link>
+            </div>
+            <div className='bottom-item'>
+              <Link to='/create'>
+                <FontAwesomeIcon icon="plus-square" size="2x" />
+              </Link>
+            </div>
+            <div className='bottom-item'>
+              <Link to='/profile/me'>
+                <FontAwesomeIcon icon="user-alt" size="2x"/>
+              </Link>
+            </div>
+            <div className='bottom-item'>
+              <Link to='/settings'>
+                <FontAwesomeIcon icon="cog" size="2x"/>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-      )} else {
-        return <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />
-      
+      )
+    } else {
+      return null
     }
   }
 }

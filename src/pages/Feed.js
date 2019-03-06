@@ -3,9 +3,11 @@ import { withAuth } from '../components/AuthProvider';
 import FeedService from '../lib/feed-service';
 import { Link } from 'react-router-dom';
 import Like from '../components/Like';
+
 import '../stylesheets/Feed.css';
 
 class Feed extends Component {
+  
   state = {
     posts: [],
     isLoading: true,
@@ -18,7 +20,6 @@ class Feed extends Component {
   getPosts = () => {
     FeedService.getFeed()
       .then((data) => {
-        // console.log(data);
         this.setState({
           posts: data,
           isLoading: false,
