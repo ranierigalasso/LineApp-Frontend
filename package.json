@@ -15,8 +15,10 @@
     "react-dom": "^16.5.2",
     "react-firebase-file-uploader": "^2.4.2",
     "react-images-upload": "^1.2.6",
+    "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.4"
+    "react-scripts": "2.0.4",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "deploy": "npm run build && firebase deploy",

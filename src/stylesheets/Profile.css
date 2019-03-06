@@ -29,7 +29,6 @@
 .profile-img h5 {
   padding-top:1rem;
 }
-
 #username {
   font-size: 1rem;
 }
@@ -52,9 +51,6 @@
 .btn-primary {
   margin-top:1.75rem!important;
 }
-button#follow-unfollow.btn.btn-primary {
-}
-
 .buttons-container {
   display: flex;
 }

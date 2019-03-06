@@ -27,16 +27,15 @@ img {
    font-size: .75rem;
    font-weight: 5;
  }
-
- .top-post {
-   display: flex;
-   justify-content: space-between;
- }
- .edit-delete {
+.top-post {
   display: flex;
   justify-content: space-between;
-  margin: 0;
-  padding: 0
+}
+.edit-delete {
+ display: flex;
+ justify-content: space-between;
+ margin: 0;
+ padding: 0
 }
 .edit-delete a {
   margin: 0 .25rem ;
@@ -57,7 +56,6 @@ img {
   width:1rem;
   height: 1rem;
 }
-
 .bottom-post {
   display: flex;
   justify-content: space-between;
@@ -77,7 +75,6 @@ input.form-control {
   margin-top:1rem!important;
   margin-right: .25rem;
 }
-
 .comment-container {
   display: flex;
   justify-content: space-between;
@@ -133,7 +130,6 @@ input.form-control {
   text-align: center!important;
   font-size: .75rem!important;
 }
-
 
 /*Spinner Css*/
 

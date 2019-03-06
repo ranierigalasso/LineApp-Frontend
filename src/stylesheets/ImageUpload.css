@@ -78,18 +78,14 @@
   }
 }
 #upload-label{
-width: auto;
-background: #007bff;
-color: white;
-border-radius: 5px;
-padding: 1rem ;
-overflow: hidden;
+  width: auto;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  padding: 1rem ;
+  overflow: hidden;
 }
-
 form {
-  /* margin-top:1rem; */
-  /* display: flex;
-  justify-content: center; */
   align-items: center;
 }
 #create-form {
