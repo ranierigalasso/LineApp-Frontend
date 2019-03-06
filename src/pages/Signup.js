@@ -69,7 +69,7 @@ class Signup extends Component {
           <Form.Group controlId="formBasicPassword">
             <Form.Control type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password" />
             <Form.Text className="text-muted">
-              Already have an account? <Link to='/login'>Log In</Link>
+              Already have an account? <Link to='/'>Log In</Link>
             </Form.Text>
           </Form.Group>
           <Button variant="primary" type="submit">

@@ -52,7 +52,7 @@ class Settings extends Component {
     ProfileService.deleteMyProfile()
       .then(() => {
         this.props.user = null;
-        this.props.history.push('/login');
+        this.props.history.push('/');
       })
       .catch((error) => {
         console.log(error)

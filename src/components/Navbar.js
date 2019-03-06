@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
 
 import '../stylesheets/Navbar.css';
@@ -49,6 +49,7 @@ class Navbar extends Component {
         </div>
       )
     } else {
+      // return <Redirect to='/login'/>
       return null
     }
   }
