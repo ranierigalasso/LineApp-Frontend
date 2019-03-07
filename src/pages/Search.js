@@ -41,9 +41,9 @@ class Search extends Component {
       <div style={{display:'flex', justifyContent: 'space-between'}} key={index}>
         <h3>{user.username}</h3>
           <Link to={`/profile/${user._id}`}>
-            <Button variant="primary" type="submit">
+            <button className='universal-button' type="submit">
               <FontAwesomeIcon icon="eye" size="1x" />              
-            </Button>
+            </button>
           </Link> 
       </div>
   )}
