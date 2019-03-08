@@ -23,17 +23,15 @@ An application specifically designed for surfers to create a social profile & sh
 ## Backlog
 
 Erorrs:
-- manage error handling in state
+- manage error handling in state (using Redux)
 
 Image:
-- upload image
-
-State:
-- manage some parts of the state with redux
+- upload images
 
 Geo Location & Surf Forecast:
 - add geolocation when creating post
 - show forecast of the spot
+- show a map of surf spots where user has surfed
   
 # Client
 
@@ -100,13 +98,13 @@ description - String
 
 The url to your repository and to your deployed project
 
-[Client repository Link](http://github.com)
-[Server repository Link](http://github.com)
+[Client repository Link](https://github.com/ranierigalasso/LineApp-Frontend)
+[Server repository Link](https://github.com/ranierigalasso/LineApp-Backend)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://lineapp-frontend.firebaseapp.com/)
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://slides.com/ranierigalasso/swellogram)
