@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { withAuth } from '../components/AuthProvider';
 import SearchService from '../lib/search-service';
 import { Link } from 'react-router-dom';
