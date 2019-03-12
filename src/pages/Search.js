@@ -4,6 +4,9 @@ import { withAuth } from '../components/AuthProvider';
 import SearchService from '../lib/search-service';
 import { Link } from 'react-router-dom';
 
+import  {searchUsers} from '../actions';
+import {connect} from 'react-redux';
+
 import '../stylesheets/Search.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -21,19 +24,22 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    this.getUsers();   
+    this.getUsers();
   }
 
   getUsers = () => {
-    SearchService.getUsers()
-      .then((data) => {
-        this.setState({
-          users: data,
-          isLoading: false,
-        })
-      })
-      .catch((error) => {
-      })
+    this.props.searchUsers();
+    console.log(this.props.search)   
+    // SearchService.getUsers()
+    //   .then((data) => {
+    //     console.log(data)
+    //     this.setState({
+    //       users: data,
+    //       isLoading: false,
+    //     })
+    //   })
+    //   .catch((error) => {
+    //   })
   }
 
   renderUsers = (users) => {
@@ -68,7 +74,7 @@ class Search extends Component {
 
   render() {
     const newUsers = this.handleNewSearch();
-    const { search } = this.state;
+    const { search } = this.state;    
     return (
       <div className='search-container'>
         <div >
@@ -86,4 +92,16 @@ class Search extends Component {
   }
 }
 
-export default withAuth()(Search);
+
+function mapStateToProps ({search}) {
+  return {search};
+}
+
+const mapDispatchToProps = dispatch => ({
+  searchUsers: () => dispatch(searchUsers())
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withAuth()(Search));
+
+// export default withAuth()(Search);
