@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Form } from 'react-bootstrap';
 import { withAuth } from '../components/AuthProvider';
-import SearchService from '../lib/search-service';
 import { Link } from 'react-router-dom';
 
 import  {searchUsers} from '../actions';
@@ -24,35 +23,38 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    this.getUsers();
-  }
+    this.props.searchUsers();
 
+  }
+  
+  
   getUsers = () => {
     this.props.searchUsers();
-    console.log(this.props.search)   
-    // SearchService.getUsers()
-    //   .then((data) => {
-    //     console.log(data)
-    //     this.setState({
-    //       users: data,
-    //       isLoading: false,
-    //     })
-    //   })
-    //   .catch((error) => {
-    //   })
   }
 
-  renderUsers = (users) => {
-    return users.map((user,index) => 
-      <div style={{display:'flex', justifyContent: 'space-between'}} key={index}>
-        <h3>{user.username}</h3>
-          <Link to={`/profile/${user._id}`}>
-            <button className='universal-button' type="submit">
-              <FontAwesomeIcon icon="eye" size="1x" />              
-            </button>
-          </Link> 
-      </div>
-  )}
+  renderUsers = () => {
+    const { search } = this.state;
+    const { searchFetch } = this.props;
+    const userList = [];
+    if(searchFetch){
+      searchFetch.map((user) => {
+        if(user.username.toLowerCase().includes(search.toLowerCase())){
+          userList.push(user)
+        }
+      })     
+      return userList.map((user,index) => 
+        <div style={{display:'flex', justifyContent: 'space-between'}} key={index}>
+          <h3>{user.username}</h3>
+            <Link to={`/profile/${user._id}`}>
+              <button className='universal-button' type="submit">
+                <FontAwesomeIcon icon="eye" size="1x" />              
+              </button>
+            </Link> 
+        </div>
+      )
+
+    }
+  }
 
   handleChange = (event) => {  
     this.setState({
@@ -60,20 +62,7 @@ class Search extends Component {
     })
   }
 
-  handleNewSearch () {
-    let newUsers = [];
-    this.state.users.map((user) => {
-      const username = user.username.toLowerCase();
-      const search = this.state.search.toLowerCase();
-      if(username.includes(search)) {
-        newUsers.push(user);
-      }
-    })
-    return newUsers;
-  }
-
   render() {
-    const newUsers = this.handleNewSearch();
     const { search } = this.state;    
     return (
       <div className='search-container'>
@@ -85,7 +74,7 @@ class Search extends Component {
           </Form>
         </div>
         <div>
-          {this.renderUsers(newUsers)}
+          {this.renderUsers()}
         </div>
       </div>
     )
@@ -93,8 +82,8 @@ class Search extends Component {
 }
 
 
-function mapStateToProps ({search}) {
-  return {search};
+function mapStateToProps ({searchFetch}) {
+  return {searchFetch};
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -103,5 +92,3 @@ const mapDispatchToProps = dispatch => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(withAuth()(Search));
-
-// export default withAuth()(Search);

@@ -6,5 +6,5 @@ import searchReducer from './searchReducer';
 export default combineReducers({
   alert: alertReducer,
   success: successReducer,
-  search: searchReducer,
+  searchFetch: searchReducer,
 })
