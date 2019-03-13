@@ -106,7 +106,6 @@ class Post extends Component {
     const params = 'waveHeight,wavePeriod,waterTemperature,windSpeed';
     ForecastService.getForecast(lat,long,params)
       .then((response) => {
-        console.log(response)
         this.setState({
           forecastData: response.hours,
           loading: false,
